@@ -1,0 +1,11 @@
+resource "openstack_blockstorage_volume_v3" "volume" {
+  name                 = var.name
+  size                 = var.size
+  volume_type          = var.volume_type
+  enable_online_resize = true
+}
+
+resource "openstack_compute_volume_attach_v2" "va" {
+  instance_id = var.instance_id
+  volume_id   = openstack_blockstorage_volume_v3.volume.id
+}
