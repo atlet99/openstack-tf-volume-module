@@ -6,6 +6,11 @@ resource "openstack_blockstorage_volume_v3" "volume" {
 }
 
 resource "openstack_compute_volume_attach_v2" "va" {
-  instance_id = var.instance_id
-  volume_id   = openstack_blockstorage_volume_v3.volume.id
+  instance_id          = var.instance_id
+  volume_id            = openstack_blockstorage_volume_v3.volume.id
+  device               = var.device
+  multiattach          = var.multiattach
+  tag                  = var.tag
+  region               = var.region
+  vendor_options       = var.vendor_options
 }
