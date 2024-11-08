@@ -14,43 +14,33 @@ output "volume_size" {
   value       = openstack_blockstorage_volume_v3.volume.size
 }
 
-output "volume_status" {
-  description = "Current status of the volume"
-  value       = openstack_blockstorage_volume_v3.volume.status
-}
-
 output "volume_type" {
   description = "Type of the volume"
   value       = openstack_blockstorage_volume_v3.volume.volume_type
 }
 
-output "volume_bootable" {
-  description = "Indicates if the volume is bootable"
-  value       = openstack_blockstorage_volume_v3.volume.bootable
-}
-
 # Outputs for openstack_compute_volume_attach_v2
-output "attachment_id" {
-  description = "ID of the volume attachment"
-  value       = openstack_compute_volume_attach_v2.va.id
+output "attachment_ids" {
+  description = "List of IDs of the volume attachments"
+  value       = [for va in openstack_compute_volume_attach_v2.va : va.id]
 }
 
-output "attached_instance_id" {
-  description = "ID of the instance to which the volume is attached"
-  value       = openstack_compute_volume_attach_v2.va.instance_id
+output "attached_instance_ids" {
+  description = "List of IDs of the instances to which the volumes are attached"
+  value       = [for va in openstack_compute_volume_attach_v2.va : va.instance_id]
 }
 
-output "attached_volume_id" {
-  description = "ID of the attached volume"
-  value       = openstack_compute_volume_attach_v2.va.volume_id
+output "attached_volume_ids" {
+  description = "List of IDs of the attached volumes"
+  value       = [for va in openstack_compute_volume_attach_v2.va : va.volume_id]
 }
 
-output "attached_device" {
-  description = "Device path for the attached volume (depends on the hypervisor)"
-  value       = openstack_compute_volume_attach_v2.va.device
+output "attached_devices" {
+  description = "List of device paths for the attached volumes (depends on the hypervisor)"
+  value       = [for va in openstack_compute_volume_attach_v2.va : va.device]
 }
 
-output "multiattach_enabled" {
-  description = "Indicates if multiattach is enabled for the volume"
-  value       = openstack_compute_volume_attach_v2.va.multiattach
+output "multiattach_enabled_list" {
+  description = "List indicating if multiattach is enabled for each volume attachment"
+  value       = [for va in openstack_compute_volume_attach_v2.va : va.multiattach]
 }
