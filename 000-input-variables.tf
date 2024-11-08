@@ -43,7 +43,7 @@ variable "region" {
 }
 
 variable "vendor_options" {
-  description = "Vendor-specific options for the attachment"
-  type        = map(any)
-  default     = {}
+  description = "Vendor-specific options for the attachment, e.g., ignore_volume_confirmation"
+  type        = map(bool)
+  default     = { ignore_volume_confirmation = false }
 }
