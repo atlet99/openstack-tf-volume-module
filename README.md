@@ -1,4 +1,4 @@
-# terraform-openstack-volumes
+# Terraform Openstack Volume Module
 
 This Terraform module creates and attaches block storage volumes to existing OpenStack instances using the OpenStack Compute (Nova) v2 API. It allows for flexible configuration of volume attachment options, including multiattach support and device tagging. This module is useful for scenarios where additional storage is needed for compute instances.
 
@@ -44,7 +44,7 @@ module "volume_attachment" {
 }
 ```
 
-### Inputs
+## Inputs
 
 | Name           | Description                                                | 	Type    | 	Default   | 	Required |
 |----------------|------------------------------------------------------------|----------|------------|-----------|
@@ -57,3 +57,7 @@ module "volume_attachment" {
 | tag            | 	Tag for the attached device			                            | string   | null       | no        |
 | region         | 	Region for the Compute client			                          | string   | null       | no        |
 | vendor_options | 	Map of vendor-specific options			                         | map(any) | {}         | no        |
+
+## License
+
+This is an open source project under the [MIT](https://github.com/atlet99/openstack-tf-volume-module/blob/master/LICENSE) license.
