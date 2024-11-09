@@ -2,6 +2,8 @@
 
 This Terraform module creates and attaches block storage volumes to existing OpenStack instances using the OpenStack Compute (Nova) v2 API. It allows for flexible configuration of volume attachment options, including multiattach support and device tagging. This module is useful for scenarios where additional storage is needed for compute instances.
 
+**Note:** This module requires **Terraform version 1.5.0** or higher and **OpenStack provider version 3.0.0** or higher.
+
 ## Features
 
 - Creates a block storage volume with configurable size and type.
